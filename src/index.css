@@ -4,8 +4,16 @@
     sans-serif;
 }
 
-/* Optional: Smooth font rendering */
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --sagara-red: #e11d48;
+  --sagara-red-light: #fecdd3;
+  --sagara-red-dark: #be123c;
+  --sagara-black: #0f172a;
+  --sagara-grey: #64748b;
+  --sagara-light-grey: #f1f5f9;
 }

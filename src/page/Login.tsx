@@ -20,8 +20,8 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-linear-to-br from-indigo-50 via-slate-50 to-teal-50">
-      <div className="bg-white p-10 w-full max-w-md rounded-2xl shadow-xl border border-slate-100">
+    <div className="h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-slate-100">
+      <div className="bg-white p-10 w-full max-w-md rounded-2xl shadow-xl border border-slate-200">
         <div className="flex flex-col items-center mb-8">
           <img src="/public/main_logo/logo_B.png" alt="" />
           <p className="text-sm text-center text-slate-600 font-medium">
@@ -31,26 +31,26 @@ const Login = () => {
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label className="block text-sm font-medium text-slate-900 mb-2">
               Email (admin@example.com)
             </label>
             <input
               type="text"
               placeholder="Enter your email"
-              className="w-full p-3.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-slate-900 placeholder:text-slate-400"
+              className="w-full p-3.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-rose-600 focus:border-rose-600 transition-all text-slate-900 placeholder:text-slate-400"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label className="block text-sm font-medium text-slate-900 mb-2">
               Password (admin123)
             </label>
             <input
               type="password"
               placeholder="Enter your password"
-              className="w-full p-3.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-slate-900 placeholder:text-slate-400"
+              className="w-full p-3.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-rose-600 focus:border-rose-600 transition-all text-slate-900 placeholder:text-slate-400"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             />
@@ -64,7 +64,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white py-3.5 rounded-xl hover:bg-indigo-700 transition-all duration-200 font-semibold shadow-md hover:shadow-lg"
+            className="w-full bg-rose-600 text-white py-3.5 rounded-xl hover:bg-rose-700 transition-all duration-200 font-semibold shadow-md hover:shadow-lg"
           >
             Masuk
           </button>

@@ -45,10 +45,10 @@ const EmployeeTable = ({ data }: Props) => {
   const getDivisionBadge = (division: string) => {
     const baseClasses = "px-3 py-1 rounded-full text-xs font-semibold";
     const colors: Record<string, string> = {
-      Digital: "bg-indigo-100 text-indigo-700",
-      Creative: "bg-pink-100 text-pink-700",
-      "Smart Devices": "bg-amber-100 text-amber-700",
-      Web3: "bg-teal-100 text-teal-700",
+      Digital: "bg-rose-100 text-rose-700",
+      Creative: "bg-slate-100 text-slate-700",
+      "Smart Devices": "bg-slate-200 text-slate-800",
+      Web3: "bg-rose-50 text-rose-600",
     };
     return `${baseClasses} ${
       colors[division] || "bg-slate-100 text-slate-700"
@@ -64,7 +64,7 @@ const EmployeeTable = ({ data }: Props) => {
         />
         <input
           placeholder="Search employees..."
-          className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-slate-900 placeholder:text-slate-400"
+          className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-rose-600 focus:border-rose-600 transition-all text-slate-900 placeholder:text-slate-400"
           onChange={(e) => setSearch(e.target.value)}
           value={search}
         />
@@ -94,7 +94,7 @@ const EmployeeTable = ({ data }: Props) => {
                       onClick={handleSort}
                       className={`px-4 py-3.5 text-left text-xs font-semibold uppercase tracking-wider cursor-pointer transition-colors ${
                         isActive
-                          ? "bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
+                          ? "bg-rose-50 text-rose-700 hover:bg-rose-100"
                           : "text-slate-700 hover:bg-slate-100"
                       }`}
                     >
@@ -102,9 +102,9 @@ const EmployeeTable = ({ data }: Props) => {
                         <span>{key.replace(/([A-Z])/g, " $1").trim()}</span>
                         {isActive &&
                           (sortDirection === "asc" ? (
-                            <ArrowUp size={14} className="text-indigo-600" />
+                            <ArrowUp size={14} className="text-rose-600" />
                           ) : (
-                            <ArrowDown size={14} className="text-indigo-600" />
+                            <ArrowDown size={14} className="text-rose-600" />
                           ))}
                       </div>
                     </th>

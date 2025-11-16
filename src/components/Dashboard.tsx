@@ -65,7 +65,8 @@ const Dashboard = () => {
     value,
   }));
 
-  const COLORS = ["#4f46e5", "#0d9488", "#f59e0b", "#ec4899", "#8b5cf6"];
+  // Sagara Brand Colors: Black, Red, Grey variations
+  const COLORS = ["#0f172a", "#e11d48", "#64748b", "#94a3b8", "#cbd5e1"];
 
   return (
     <div className="space-y-8">
@@ -95,12 +96,12 @@ const Dashboard = () => {
           </h2>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={barChartData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="division" />
-              <YAxis />
+              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+              <XAxis dataKey="division" stroke="#64748b" />
+              <YAxis stroke="#64748b" />
               <Tooltip />
               <Legend />
-              <Bar dataKey="count" fill="#4f46e5" name="Number of Projects" />
+              <Bar dataKey="count" fill="#e11d48" name="Number of Projects" />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -144,15 +145,15 @@ const Dashboard = () => {
           </h2>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={lineChartData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
+              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+              <XAxis dataKey="month" stroke="#64748b" />
+              <YAxis stroke="#64748b" />
               <Tooltip />
               <Legend />
               <Line
                 type="monotone"
                 dataKey="projects"
-                stroke="#0d9488"
+                stroke="#e11d48"
                 strokeWidth={2}
                 name="New Projects"
               />

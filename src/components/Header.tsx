@@ -7,7 +7,7 @@ const Header = () => {
   const user = localStorage.getItem("user") || "User";
 
   return (
-    <div className="flex flex-row px-4 justify-between items-center">
+    <div className="flex flex-row px-4 justify-between items-center bg-white border-b border-slate-200">
       <Link to="/dashboard">
         <img
           src="/public/main_logo/logo_B.png"
@@ -15,14 +15,14 @@ const Header = () => {
           alt="Sagara Tech Logo"
         />
       </Link>
-      <div className="flex justify-between items-center px-6 py-4 bg-white shadow-sm">
+      <div className="flex justify-between items-center px-6 py-4">
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 px-3 py-2 bg-slate-50 rounded-lg">
+          <div className="flex items-center gap-2 px-3 py-2 bg-slate-50 rounded-lg border border-slate-200">
             <User size={16} className="text-slate-600" />
-            <span className="text-sm font-medium text-slate-700">{user}</span>
+            <span className="text-sm font-medium text-slate-900">{user}</span>
           </div>
           <button
-            className="flex items-center gap-2 bg-indigo-600 px-4 py-2 text-white rounded-lg hover:bg-indigo-700 transition-all duration-200 shadow-sm hover:shadow-md font-medium text-sm"
+            className="flex items-center gap-2 bg-rose-600 px-4 py-2 text-white rounded-lg hover:bg-rose-700 transition-all duration-200 shadow-sm hover:shadow-md font-medium text-sm"
             onClick={() => {
               logout();
               navigate("/login");
