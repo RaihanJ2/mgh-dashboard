@@ -27,18 +27,18 @@ const ProjectTable = ({ data }: Props) => {
   const getStatusBadge = (status: string) => {
     const baseClasses = "px-2 py-1 rounded text-xs font-semibold";
     if (status === "Active") {
-      return `${baseClasses} bg-green-100 text-green-800`;
+      return `${baseClasses} bg-emerald-100 text-emerald-800`;
     } else if (status === "Completed") {
-      return `${baseClasses} bg-blue-100 text-blue-800`;
+      return `${baseClasses} bg-indigo-100 text-indigo-800`;
     }
-    return `${baseClasses} bg-gray-100 text-gray-800`;
+    return `${baseClasses} bg-slate-100 text-slate-800`;
   };
 
   const getProgressColor = (progress: number) => {
-    if (progress >= 75) return "bg-green-500";
-    if (progress >= 50) return "bg-blue-500";
-    if (progress >= 25) return "bg-yellow-500";
-    return "bg-red-500";
+    if (progress >= 75) return "bg-emerald-500";
+    if (progress >= 50) return "bg-indigo-500";
+    if (progress >= 25) return "bg-amber-500";
+    return "bg-rose-500";
   };
 
   return (
@@ -52,7 +52,7 @@ const ProjectTable = ({ data }: Props) => {
       <div className="overflow-x-auto">
         <table className="w-full border">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-slate-100">
               {[
                 "id",
                 "name",
@@ -65,7 +65,7 @@ const ProjectTable = ({ data }: Props) => {
                 <th
                   key={key}
                   onClick={() => setSortKey(key as keyof Project)}
-                  className="border p-2 cursor-pointer hover:bg-gray-200 text-left"
+                  className="border p-2 cursor-pointer hover:bg-slate-200 text-left"
                 >
                   {key.toUpperCase()}
                 </th>
@@ -75,7 +75,7 @@ const ProjectTable = ({ data }: Props) => {
 
           <tbody>
             {paginated.map((project) => (
-              <tr key={project.id} className="hover:bg-gray-50">
+              <tr key={project.id} className="hover:bg-slate-50">
                 <td className="border p-2">{project.id}</td>
                 <td className="border p-2 font-medium">{project.name}</td>
                 <td className="border p-2">{project.client}</td>
@@ -87,7 +87,7 @@ const ProjectTable = ({ data }: Props) => {
                 </td>
                 <td className="border p-2">
                   <div className="flex items-center gap-2">
-                    <div className="flex-1 bg-gray-200 rounded-full h-2">
+                    <div className="flex-1 bg-slate-200 rounded-full h-2">
                       <div
                         className={`h-2 rounded-full ${getProgressColor(
                           project.progress
@@ -115,7 +115,7 @@ const ProjectTable = ({ data }: Props) => {
         <div className="flex gap-2">
           <button
             disabled={page === 1}
-            className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50 hover:bg-gray-400"
+            className="px-3 py-1 bg-slate-200 rounded disabled:opacity-50 hover:bg-slate-300 transition-colors"
             onClick={() => setPage(page - 1)}
           >
             Prev
@@ -123,7 +123,7 @@ const ProjectTable = ({ data }: Props) => {
 
           <button
             disabled={page * rowsPerPage >= filtered.length}
-            className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50 hover:bg-gray-400"
+            className="px-3 py-1 bg-slate-200 rounded disabled:opacity-50 hover:bg-slate-300 transition-colors"
             onClick={() => setPage(page + 1)}
           >
             Next

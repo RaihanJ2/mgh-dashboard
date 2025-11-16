@@ -63,7 +63,7 @@ const Dashboard = () => {
     value,
   }));
 
-  const COLORS = ["#3b82f6", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6"];
+  const COLORS = ["#4f46e5", "#0d9488", "#f59e0b", "#ec4899", "#8b5cf6"];
 
   const activeProjects = projects.filter((p) => p.status === "Active").length;
   const completedProjects = projects.filter(
@@ -107,7 +107,7 @@ const Dashboard = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="count" fill="#3b82f6" name="Number of Projects" />
+              <Bar dataKey="count" fill="#4f46e5" name="Number of Projects" />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -161,7 +161,7 @@ const Dashboard = () => {
               <Line
                 type="monotone"
                 dataKey="projects"
-                stroke="#10b981"
+                stroke="#0d9488"
                 strokeWidth={2}
                 name="New Projects"
               />

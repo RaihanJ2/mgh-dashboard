@@ -20,10 +20,10 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-gray-100">
+    <div className="h-screen flex items-center justify-center bg-linear-to-br from-indigo-50 via-slate-50 to-teal-50">
       <div className="bg-white p-8 w-96 rounded-lg shadow-xl">
         <div className="flex flex-col items-center mb-6">
-          <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+          <div className="w-16 h-16 bg-indigo-600 rounded-lg flex items-center justify-center mb-4">
             <span className="text-white font-bold text-2xl">S</span>
           </div>
           <h1 className="text-2xl font-bold text-gray-800 mb-1">
@@ -48,7 +48,7 @@ const Login = () => {
             <input
               type="text"
               placeholder="Email"
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
             />
@@ -58,7 +58,7 @@ const Login = () => {
             <input
               type="password"
               placeholder="Password"
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             />
@@ -66,7 +66,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+            className="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
           >
             Masuk
           </button>

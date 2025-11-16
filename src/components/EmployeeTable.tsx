@@ -27,12 +27,14 @@ const EmployeeTable = ({ data }: Props) => {
   const getDivisionBadge = (division: string) => {
     const baseClasses = "px-2 py-1 rounded text-xs font-semibold";
     const colors: Record<string, string> = {
-      Digital: "bg-blue-100 text-blue-800",
-      Creative: "bg-purple-100 text-purple-800",
-      "Smart Devices": "bg-orange-100 text-orange-800",
-      Web3: "bg-green-100 text-green-800",
+      Digital: "bg-indigo-100 text-indigo-800",
+      Creative: "bg-pink-100 text-pink-800",
+      "Smart Devices": "bg-amber-100 text-amber-800",
+      Web3: "bg-teal-100 text-teal-800",
     };
-    return `${baseClasses} ${colors[division] || "bg-gray-100 text-gray-800"}`;
+    return `${baseClasses} ${
+      colors[division] || "bg-slate-100 text-slate-800"
+    }`;
   };
 
   return (
@@ -46,13 +48,13 @@ const EmployeeTable = ({ data }: Props) => {
       <div className="overflow-x-auto">
         <table className="w-full border">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-slate-100">
               {["id", "name", "email", "division", "role", "joinedAt"].map(
                 (key) => (
                   <th
                     key={key}
                     onClick={() => setSortKey(key as keyof Employee)}
-                    className="border p-2 cursor-pointer hover:bg-gray-200 text-left"
+                    className="border p-2 cursor-pointer hover:bg-slate-200 text-left"
                   >
                     {key.toUpperCase()}
                   </th>
@@ -63,7 +65,7 @@ const EmployeeTable = ({ data }: Props) => {
 
           <tbody>
             {paginated.map((employee) => (
-              <tr key={employee.id} className="hover:bg-gray-50">
+              <tr key={employee.id} className="hover:bg-slate-50">
                 <td className="border p-2">{employee.id}</td>
                 <td className="border p-2 font-medium">{employee.name}</td>
                 <td className="border p-2">{employee.email}</td>
@@ -88,7 +90,7 @@ const EmployeeTable = ({ data }: Props) => {
         <div className="flex gap-2">
           <button
             disabled={page === 1}
-            className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50 hover:bg-gray-400"
+            className="px-3 py-1 bg-slate-200 rounded disabled:opacity-50 hover:bg-slate-300 transition-colors"
             onClick={() => setPage(page - 1)}
           >
             Prev
@@ -96,7 +98,7 @@ const EmployeeTable = ({ data }: Props) => {
 
           <button
             disabled={page * rowsPerPage >= filtered.length}
-            className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50 hover:bg-gray-400"
+            className="px-3 py-1 bg-slate-200 rounded disabled:opacity-50 hover:bg-slate-300 transition-colors"
             onClick={() => setPage(page + 1)}
           >
             Next
