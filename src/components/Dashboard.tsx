@@ -1,4 +1,4 @@
-import SummaryCard from "../components/SummaryCard";
+import SummaryCard from "./SummaryCard";
 import { projects } from "../data/projects";
 import {
   BarChart,
@@ -17,13 +17,22 @@ import {
 } from "recharts";
 
 const Dashboard = () => {
-  // Prepare data for charts
+  // Calculate summary statistics
+  const activeProjects = projects.filter((p) => p.status === "Active").length;
+  const completedProjects = projects.filter(
+    (p) => p.status === "Completed"
+  ).length;
+  const avgProgress =
+    Math.round(
+      projects.reduce((sum, p) => sum + p.progress, 0) / projects.length
+    ) || 0;
+
+  // Projects by Division (Bar Chart)
   const divisionCounts = projects.reduce((acc, project) => {
     acc[project.division] = (acc[project.division] || 0) + 1;
     return acc;
   }, {} as Record<string, number>);
 
-  // Bar chart data - Projects by Division
   const barChartData = Object.entries(divisionCounts).map(
     ([division, count]) => ({
       division,
@@ -31,7 +40,7 @@ const Dashboard = () => {
     })
   );
 
-  // Line chart data - Project growth over time (by month)
+  // Project Growth Over Time (Line Chart)
   const monthlyData = projects.reduce((acc, project) => {
     const month = new Date(project.createdAt).toLocaleDateString("en-US", {
       month: "short",
@@ -42,17 +51,10 @@ const Dashboard = () => {
   }, {} as Record<string, number>);
 
   const lineChartData = Object.entries(monthlyData)
-    .map(([month, count]) => ({
-      month,
-      projects: count,
-    }))
-    .sort((a, b) => {
-      const dateA = new Date(a.month);
-      const dateB = new Date(b.month);
-      return dateA.getTime() - dateB.getTime();
-    });
+    .map(([month, projects]) => ({ month, projects }))
+    .sort((a, b) => new Date(a.month).getTime() - new Date(b.month).getTime());
 
-  // Pie chart data - Project status distribution
+  // Project Status Distribution (Pie Chart)
   const statusCounts = projects.reduce((acc, project) => {
     acc[project.status] = (acc[project.status] || 0) + 1;
     return acc;
@@ -64,15 +66,6 @@ const Dashboard = () => {
   }));
 
   const COLORS = ["#4f46e5", "#0d9488", "#f59e0b", "#ec4899", "#8b5cf6"];
-
-  const activeProjects = projects.filter((p) => p.status === "Active").length;
-  const completedProjects = projects.filter(
-    (p) => p.status === "Completed"
-  ).length;
-  const avgProgress =
-    Math.round(
-      projects.reduce((sum, p) => sum + p.progress, 0) / projects.length
-    ) || 0;
 
   return (
     <div className="space-y-8">
@@ -125,9 +118,7 @@ const Dashboard = () => {
                 cy="50%"
                 labelLine={false}
                 label={({ name, percent }) =>
-                  percent !== undefined
-                    ? `${name}: ${(percent * 100).toFixed(0)}%`
-                    : name
+                  `${name}: ${((percent || 0) * 100).toFixed(0)}%`
                 }
                 outerRadius={100}
                 fill="#8884d8"

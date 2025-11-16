@@ -5,14 +5,11 @@ const Sidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="w-64 bg-slate-900 text-white h-screen p-6 flex flex-col border-r border-slate-800">
-      <div className="mb-8">
-        <h2 className="text-lg font-bold mb-1.5 text-white tracking-tight">
+    <div className="w-64 bg-slate-700 text-white h-screen p-6 flex flex-col border-r border-slate-800">
+      <div className="mb-4">
+        <h2 className="text-2xl font-bold text-white tracking-tight">
           Navigation
         </h2>
-        <p className="text-xs text-slate-400 font-medium">
-          Plan, build, grow digital products
-        </p>
       </div>
 
       <ul className="space-y-1.5 flex-1">
@@ -56,26 +53,6 @@ const Sidebar = () => {
           </Link>
         </li>
       </ul>
-
-      <div className="mt-auto pt-6 border-t border-slate-800">
-        <p className="text-xs text-slate-400 mb-3 font-semibold uppercase tracking-wider">
-          Divisions
-        </p>
-        <ul className="space-y-2">
-          <li className="text-sm text-slate-300 hover:text-white transition-colors cursor-pointer px-2 py-1.5 rounded-lg hover:bg-slate-800/50">
-            Digital Projects
-          </li>
-          <li className="text-sm text-slate-300 hover:text-white transition-colors cursor-pointer px-2 py-1.5 rounded-lg hover:bg-slate-800/50">
-            Creative Projects
-          </li>
-          <li className="text-sm text-slate-300 hover:text-white transition-colors cursor-pointer px-2 py-1.5 rounded-lg hover:bg-slate-800/50">
-            Web3
-          </li>
-          <li className="text-sm text-slate-300 hover:text-white transition-colors cursor-pointer px-2 py-1.5 rounded-lg hover:bg-slate-800/50">
-            Smart Devices
-          </li>
-        </ul>
-      </div>
     </div>
   );
 };

@@ -23,24 +23,16 @@ const Login = () => {
     <div className="h-screen flex items-center justify-center bg-linear-to-br from-indigo-50 via-slate-50 to-teal-50">
       <div className="bg-white p-10 w-full max-w-md rounded-2xl shadow-xl border border-slate-100">
         <div className="flex flex-col items-center mb-8">
-          <div className="w-20 h-20 bg-linear-to-br from-indigo-600 to-indigo-700 rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-indigo-500/20">
-            <span className="text-white font-bold text-3xl">S</span>
-          </div>
-          <h1 className="text-2xl font-bold text-slate-900 mb-1.5 tracking-tight">
-            Sagara Technology
-          </h1>
-          <p className="text-sm text-slate-600 font-medium">
-            Software Developer Indonesia
-          </p>
-          <p className="text-xs text-slate-400 mt-2.5 text-center font-medium">
-            Plan, build, grow digital products
+          <img src="/public/main_logo/logo_B.png" alt="" />
+          <p className="text-sm text-center text-slate-600 font-medium">
+            Plan, build, grow digital products. Continuously delivering impact.
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">
-              Email
+              Email (admin@example.com)
             </label>
             <input
               type="text"
@@ -53,7 +45,7 @@ const Login = () => {
 
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">
-              Password
+              Password (admin123)
             </label>
             <input
               type="password"

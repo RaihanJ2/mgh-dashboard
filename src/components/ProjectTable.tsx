@@ -159,7 +159,7 @@ const ProjectTable = ({ data }: Props) => {
                         style={{ width: `${project.progress}%` }}
                       ></div>
                     </div>
-                    <span className="text-sm font-medium text-slate-700 min-w-[40px]">
+                    <span className="text-sm font-medium text-slate-700 min-w-10">
                       {project.progress}%
                     </span>
                   </div>
