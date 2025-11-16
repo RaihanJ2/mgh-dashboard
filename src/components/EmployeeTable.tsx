@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { Employee } from "../type";
+import { Search, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Props {
   data: Employee[];
@@ -25,57 +26,77 @@ const EmployeeTable = ({ data }: Props) => {
   );
 
   const getDivisionBadge = (division: string) => {
-    const baseClasses = "px-2 py-1 rounded text-xs font-semibold";
+    const baseClasses = "px-3 py-1 rounded-full text-xs font-semibold";
     const colors: Record<string, string> = {
-      Digital: "bg-indigo-100 text-indigo-800",
-      Creative: "bg-pink-100 text-pink-800",
-      "Smart Devices": "bg-amber-100 text-amber-800",
-      Web3: "bg-teal-100 text-teal-800",
+      Digital: "bg-indigo-100 text-indigo-700",
+      Creative: "bg-pink-100 text-pink-700",
+      "Smart Devices": "bg-amber-100 text-amber-700",
+      Web3: "bg-teal-100 text-teal-700",
     };
     return `${baseClasses} ${
-      colors[division] || "bg-slate-100 text-slate-800"
+      colors[division] || "bg-slate-100 text-slate-700"
     }`;
   };
 
   return (
-    <div>
-      <input
-        placeholder="Search employees..."
-        className="p-2 border rounded mb-3 w-full"
-        onChange={(e) => setSearch(e.target.value)}
-      />
+    <div className="space-y-4">
+      <div className="relative">
+        <Search
+          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400"
+          size={18}
+        />
+        <input
+          placeholder="Search employees..."
+          className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-slate-900 placeholder:text-slate-400"
+          onChange={(e) => setSearch(e.target.value)}
+          value={search}
+        />
+      </div>
 
-      <div className="overflow-x-auto">
-        <table className="w-full border">
+      <div className="overflow-x-auto rounded-xl border border-slate-200">
+        <table className="w-full">
           <thead>
-            <tr className="bg-slate-100">
+            <tr className="bg-slate-50 border-b border-slate-200">
               {["id", "name", "email", "division", "role", "joinedAt"].map(
                 (key) => (
                   <th
                     key={key}
                     onClick={() => setSortKey(key as keyof Employee)}
-                    className="border p-2 cursor-pointer hover:bg-slate-200 text-left"
+                    className="px-4 py-3.5 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider cursor-pointer hover:bg-slate-100 transition-colors"
                   >
-                    {key.toUpperCase()}
+                    {key.replace(/([A-Z])/g, " $1").trim()}
                   </th>
                 )
               )}
             </tr>
           </thead>
 
-          <tbody>
+          <tbody className="bg-white divide-y divide-slate-200">
             {paginated.map((employee) => (
-              <tr key={employee.id} className="hover:bg-slate-50">
-                <td className="border p-2">{employee.id}</td>
-                <td className="border p-2 font-medium">{employee.name}</td>
-                <td className="border p-2">{employee.email}</td>
-                <td className="border p-2">
+              <tr
+                key={employee.id}
+                className="hover:bg-slate-50 transition-colors"
+              >
+                <td className="px-4 py-4 text-sm text-slate-600">
+                  {employee.id}
+                </td>
+                <td className="px-4 py-4 text-sm font-semibold text-slate-900">
+                  {employee.name}
+                </td>
+                <td className="px-4 py-4 text-sm text-slate-600">
+                  {employee.email}
+                </td>
+                <td className="px-4 py-4">
                   <span className={getDivisionBadge(employee.division)}>
                     {employee.division}
                   </span>
                 </td>
-                <td className="border p-2">{employee.role}</td>
-                <td className="border p-2">{employee.joinedAt}</td>
+                <td className="px-4 py-4 text-sm text-slate-600">
+                  {employee.role}
+                </td>
+                <td className="px-4 py-4 text-sm text-slate-600">
+                  {employee.joinedAt}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -83,25 +104,35 @@ const EmployeeTable = ({ data }: Props) => {
       </div>
 
       {/* Pagination */}
-      <div className="flex gap-2 mt-3 justify-between items-center">
-        <span className="text-sm text-gray-600">
-          Showing {paginated.length} of {filtered.length} employees
+      <div className="flex gap-4 justify-between items-center pt-2">
+        <span className="text-sm text-slate-600 font-medium">
+          Showing{" "}
+          <span className="font-semibold text-slate-900">
+            {paginated.length}
+          </span>{" "}
+          of{" "}
+          <span className="font-semibold text-slate-900">
+            {filtered.length}
+          </span>{" "}
+          employees
         </span>
         <div className="flex gap-2">
           <button
             disabled={page === 1}
-            className="px-3 py-1 bg-slate-200 rounded disabled:opacity-50 hover:bg-slate-300 transition-colors"
+            className="flex items-center gap-1.5 px-4 py-2 bg-white border border-slate-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50 transition-all text-sm font-medium text-slate-700"
             onClick={() => setPage(page - 1)}
           >
+            <ChevronLeft size={16} />
             Prev
           </button>
 
           <button
             disabled={page * rowsPerPage >= filtered.length}
-            className="px-3 py-1 bg-slate-200 rounded disabled:opacity-50 hover:bg-slate-300 transition-colors"
+            className="flex items-center gap-1.5 px-4 py-2 bg-white border border-slate-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50 transition-all text-sm font-medium text-slate-700"
             onClick={() => setPage(page + 1)}
           >
             Next
+            <ChevronRight size={16} />
           </button>
         </div>
       </div>

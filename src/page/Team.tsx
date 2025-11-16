@@ -8,26 +8,37 @@ const Team = () => {
   }, {} as Record<string, number>);
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">Team</h1>
-        <p className="text-gray-600">
+    <div className="space-y-8">
+      <div className="mb-2">
+        <h1 className="text-3xl font-bold text-slate-900 mb-2 tracking-tight">
+          Team
+        </h1>
+        <p className="text-slate-600 text-base">
           Sagara Technology team members across all divisions
         </p>
       </div>
 
       {/* Division Summary */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {Object.entries(divisionCounts).map(([division, count]) => (
-          <div key={division} className="bg-white p-4 rounded shadow">
-            <p className="text-gray-600 text-sm">{division}</p>
-            <h2 className="text-2xl font-bold text-gray-800">{count}</h2>
-            <p className="text-xs text-gray-500 mt-1">Team Members</p>
+          <div
+            key={division}
+            className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-200"
+          >
+            <p className="text-sm font-medium text-slate-600 mb-2">
+              {division}
+            </p>
+            <h2 className="text-3xl font-bold text-slate-900 tracking-tight">
+              {count}
+            </h2>
+            <p className="text-xs text-slate-500 mt-1 font-medium">
+              Team Members
+            </p>
           </div>
         ))}
       </div>
 
-      <div className="bg-white p-5 rounded shadow">
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
         <EmployeeTable data={employees} />
       </div>
     </div>

@@ -5,64 +5,73 @@ const Sidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="w-60 bg-slate-900 text-white h-screen p-4 flex flex-col">
-      <div className="mb-6">
-        <h2 className="text-xl font-bold mb-2">Navigation</h2>
-        <p className="text-xs text-slate-400">
+    <div className="w-64 bg-slate-900 text-white h-screen p-6 flex flex-col border-r border-slate-800">
+      <div className="mb-8">
+        <h2 className="text-lg font-bold mb-1.5 text-white tracking-tight">
+          Navigation
+        </h2>
+        <p className="text-xs text-slate-400 font-medium">
           Plan, build, grow digital products
         </p>
       </div>
 
-      <ul className="space-y-2 flex-1">
-        <li
-          className={`p-2 rounded cursor-pointer ${
-            location.pathname === "/dashboard"
-              ? "bg-indigo-600 text-white"
-              : "hover:bg-slate-800"
-          }`}
-        >
-          <Link to="/dashboard" className="flex items-center gap-2">
-            <BarChart3 size={18} />
-            Analytics
+      <ul className="space-y-1.5 flex-1">
+        <li>
+          <Link
+            to="/dashboard"
+            className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
+              location.pathname === "/dashboard"
+                ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/20"
+                : "text-slate-300 hover:bg-slate-800 hover:text-white"
+            }`}
+          >
+            <BarChart3 size={20} />
+            <span className="font-medium">Analytics</span>
           </Link>
         </li>
-        <li
-          className={`p-2 rounded cursor-pointer ${
-            location.pathname === "/projects"
-              ? "bg-indigo-600 text-white"
-              : "hover:bg-slate-800"
-          }`}
-        >
-          <Link to="/projects" className="flex items-center gap-2">
-            <Rocket size={18} />
-            Projects
+        <li>
+          <Link
+            to="/projects"
+            className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
+              location.pathname === "/projects"
+                ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/20"
+                : "text-slate-300 hover:bg-slate-800 hover:text-white"
+            }`}
+          >
+            <Rocket size={20} />
+            <span className="font-medium">Projects</span>
           </Link>
         </li>
-        <li
-          className={`p-2 rounded cursor-pointer ${
-            location.pathname === "/team"
-              ? "bg-indigo-600 text-white"
-              : "hover:bg-slate-800"
-          }`}
-        >
-          <Link to="/team" className="flex items-center gap-2">
-            <Users size={18} />
-            Team
+        <li>
+          <Link
+            to="/team"
+            className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
+              location.pathname === "/team"
+                ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/20"
+                : "text-slate-300 hover:bg-slate-800 hover:text-white"
+            }`}
+          >
+            <Users size={20} />
+            <span className="font-medium">Team</span>
           </Link>
         </li>
       </ul>
 
-      <div className="mt-6 pt-6 border-t border-slate-700">
-        <p className="text-xs text-slate-400 mb-2">Divisions</p>
-        <ul className="space-y-1">
-          <li className="text-sm text-slate-300 hover:text-white">
+      <div className="mt-auto pt-6 border-t border-slate-800">
+        <p className="text-xs text-slate-400 mb-3 font-semibold uppercase tracking-wider">
+          Divisions
+        </p>
+        <ul className="space-y-2">
+          <li className="text-sm text-slate-300 hover:text-white transition-colors cursor-pointer px-2 py-1.5 rounded-lg hover:bg-slate-800/50">
             Digital Projects
           </li>
-          <li className="text-sm text-slate-300 hover:text-white">
+          <li className="text-sm text-slate-300 hover:text-white transition-colors cursor-pointer px-2 py-1.5 rounded-lg hover:bg-slate-800/50">
             Creative Projects
           </li>
-          <li className="text-sm text-slate-300 hover:text-white">Web3</li>
-          <li className="text-sm text-slate-300 hover:text-white">
+          <li className="text-sm text-slate-300 hover:text-white transition-colors cursor-pointer px-2 py-1.5 rounded-lg hover:bg-slate-800/50">
+            Web3
+          </li>
+          <li className="text-sm text-slate-300 hover:text-white transition-colors cursor-pointer px-2 py-1.5 rounded-lg hover:bg-slate-800/50">
             Smart Devices
           </li>
         </ul>

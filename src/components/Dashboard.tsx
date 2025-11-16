@@ -75,18 +75,18 @@ const Dashboard = () => {
     ) || 0;
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">
-          Sagara Technology Analytics
+    <div className="space-y-8">
+      <div className="mb-2">
+        <h1 className="text-3xl font-bold text-slate-900 mb-2 tracking-tight">
+          Analytics Dashboard
         </h1>
-        <p className="text-gray-600">
+        <p className="text-slate-600 text-base">
           Plan, build, grow digital products. Continuously delivering impact.
         </p>
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <SummaryCard title="Total Projects" value={projects.length} />
         <SummaryCard title="Active Projects" value={activeProjects} />
         <SummaryCard title="Completed Projects" value={completedProjects} />
@@ -96,8 +96,8 @@ const Dashboard = () => {
       {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Bar Chart - Projects by Division */}
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold mb-4 text-gray-800">
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+          <h2 className="text-lg font-semibold mb-6 text-slate-900">
             Projects by Division
           </h2>
           <ResponsiveContainer width="100%" height={300}>
@@ -113,8 +113,8 @@ const Dashboard = () => {
         </div>
 
         {/* Pie Chart - Project Status Distribution */}
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold mb-4 text-gray-800">
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+          <h2 className="text-lg font-semibold mb-6 text-slate-900">
             Project Status Distribution
           </h2>
           <ResponsiveContainer width="100%" height={300}>
@@ -147,8 +147,8 @@ const Dashboard = () => {
         </div>
 
         {/* Line Chart - Project Growth Over Time */}
-        <div className="bg-white p-6 rounded-lg shadow lg:col-span-2">
-          <h2 className="text-xl font-semibold mb-4 text-gray-800">
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 lg:col-span-2">
+          <h2 className="text-lg font-semibold mb-6 text-slate-900">
             Project Growth Over Time
           </h2>
           <ResponsiveContainer width="100%" height={300}>
