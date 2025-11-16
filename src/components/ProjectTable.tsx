@@ -1,14 +1,23 @@
 import { useState } from "react";
 import type { Project } from "../type";
-import { Search, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Search,
+  ChevronLeft,
+  ChevronRight,
+  ArrowUp,
+  ArrowDown,
+} from "lucide-react";
 
 interface Props {
   data: Project[];
 }
 
+type SortDirection = "asc" | "desc";
+
 const ProjectTable = ({ data }: Props) => {
   const [search, setSearch] = useState("");
   const [sortKey, setSortKey] = useState<keyof Project>("id");
+  const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
   const [page, setPage] = useState(1);
   const rowsPerPage = 5;
 
@@ -18,7 +27,15 @@ const ProjectTable = ({ data }: Props) => {
         d.name.toLowerCase().includes(search.toLowerCase()) ||
         d.client.toLowerCase().includes(search.toLowerCase())
     )
-    .sort((a, b) => (a[sortKey] > b[sortKey] ? 1 : -1));
+    .sort((a, b) => {
+      const aValue = a[sortKey];
+      const bValue = b[sortKey];
+      if (sortDirection === "asc") {
+        return aValue > bValue ? 1 : -1;
+      } else {
+        return aValue < bValue ? 1 : -1;
+      }
+    });
 
   const paginated = filtered.slice(
     (page - 1) * rowsPerPage,
@@ -69,15 +86,43 @@ const ProjectTable = ({ data }: Props) => {
                 "status",
                 "progress",
                 "createdAt",
-              ].map((key) => (
-                <th
-                  key={key}
-                  onClick={() => setSortKey(key as keyof Project)}
-                  className="px-4 py-3.5 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider cursor-pointer hover:bg-slate-100 transition-colors"
-                >
-                  {key.replace(/([A-Z])/g, " $1").trim()}
-                </th>
-              ))}
+              ].map((key) => {
+                const isActive = sortKey === key;
+                const handleSort = () => {
+                  if (sortKey === key) {
+                    // Toggle direction if clicking the same column
+                    setSortDirection((prev) =>
+                      prev === "asc" ? "desc" : "asc"
+                    );
+                  } else {
+                    // Set new column and reset to ascending
+                    setSortKey(key as keyof Project);
+                    setSortDirection("asc");
+                  }
+                };
+
+                return (
+                  <th
+                    key={key}
+                    onClick={handleSort}
+                    className={`px-4 py-3.5 text-left text-xs font-semibold uppercase tracking-wider cursor-pointer transition-colors ${
+                      isActive
+                        ? "bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
+                        : "text-slate-700 hover:bg-slate-100"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span>{key.replace(/([A-Z])/g, " $1").trim()}</span>
+                      {isActive &&
+                        (sortDirection === "asc" ? (
+                          <ArrowUp size={14} className="text-indigo-600" />
+                        ) : (
+                          <ArrowDown size={14} className="text-indigo-600" />
+                        ))}
+                    </div>
+                  </th>
+                );
+              })}
             </tr>
           </thead>
 

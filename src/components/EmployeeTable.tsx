@@ -1,14 +1,23 @@
 import { useState } from "react";
 import type { Employee } from "../type";
-import { Search, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Search,
+  ChevronLeft,
+  ChevronRight,
+  ArrowUp,
+  ArrowDown,
+} from "lucide-react";
 
 interface Props {
   data: Employee[];
 }
 
+type SortDirection = "asc" | "desc";
+
 const EmployeeTable = ({ data }: Props) => {
   const [search, setSearch] = useState("");
   const [sortKey, setSortKey] = useState<keyof Employee>("id");
+  const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
   const [page, setPage] = useState(1);
   const rowsPerPage = 5;
 
@@ -18,7 +27,15 @@ const EmployeeTable = ({ data }: Props) => {
         d.name.toLowerCase().includes(search.toLowerCase()) ||
         d.email.toLowerCase().includes(search.toLowerCase())
     )
-    .sort((a, b) => (a[sortKey] > b[sortKey] ? 1 : -1));
+    .sort((a, b) => {
+      const aValue = a[sortKey];
+      const bValue = b[sortKey];
+      if (sortDirection === "asc") {
+        return aValue > bValue ? 1 : -1;
+      } else {
+        return aValue < bValue ? 1 : -1;
+      }
+    });
 
   const paginated = filtered.slice(
     (page - 1) * rowsPerPage,
@@ -58,15 +75,41 @@ const EmployeeTable = ({ data }: Props) => {
           <thead>
             <tr className="bg-slate-50 border-b border-slate-200">
               {["id", "name", "email", "division", "role", "joinedAt"].map(
-                (key) => (
-                  <th
-                    key={key}
-                    onClick={() => setSortKey(key as keyof Employee)}
-                    className="px-4 py-3.5 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider cursor-pointer hover:bg-slate-100 transition-colors"
-                  >
-                    {key.replace(/([A-Z])/g, " $1").trim()}
-                  </th>
-                )
+                (key) => {
+                  const isActive = sortKey === key;
+                  const handleSort = () => {
+                    if (sortKey === key) {
+                      setSortDirection((prev) =>
+                        prev === "asc" ? "desc" : "asc"
+                      );
+                    } else {
+                      setSortKey(key as keyof Employee);
+                      setSortDirection("asc");
+                    }
+                  };
+
+                  return (
+                    <th
+                      key={key}
+                      onClick={handleSort}
+                      className={`px-4 py-3.5 text-left text-xs font-semibold uppercase tracking-wider cursor-pointer transition-colors ${
+                        isActive
+                          ? "bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
+                          : "text-slate-700 hover:bg-slate-100"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>{key.replace(/([A-Z])/g, " $1").trim()}</span>
+                        {isActive &&
+                          (sortDirection === "asc" ? (
+                            <ArrowUp size={14} className="text-indigo-600" />
+                          ) : (
+                            <ArrowDown size={14} className="text-indigo-600" />
+                          ))}
+                      </div>
+                    </th>
+                  );
+                }
               )}
             </tr>
           </thead>
