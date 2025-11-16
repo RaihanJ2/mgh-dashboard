@@ -1,73 +1,104 @@
-# React + TypeScript + Vite
+# Sagara Technology Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Software Developer Indonesia** - Plan, build, grow digital products. Continuously delivering impact.
 
-Currently, two official plugins are available:
+A comprehensive dashboard application for managing Sagara Technology's projects, team, and analytics.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+### 📊 Analytics Dashboard
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Summary Cards**: Total Projects, Active Projects, Completed Projects, Average Progress
+- **Charts**:
+  - Bar Chart: Projects by Division (Digital, Creative, Web3, Smart Devices)
+  - Pie Chart: Project Status Distribution
+  - Line Chart: Project Growth Over Time
 
-## Expanding the ESLint configuration
+### 🚀 Projects Management
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- View all projects across divisions
+- Track project progress and status
+- Filter and search projects by name or client
+- Sort by various criteria
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 👥 Team Management
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- View team members across all divisions
+- Division-based team statistics
+- Employee information and roles
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 🔐 Authentication
+
+- Secure login system
+- Protected routes
+- Session management
+
+## Technology Stack
+
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **React Router** - Navigation and routing
+- **Recharts** - Data visualization
+- **Tailwind CSS** - Styling
+- **Lucide React** - Icons
+
+## Project Structure
+
+```
+src/
+├── components/       # Reusable components
+│   ├── Dashboard.tsx    # Analytics dashboard
+│   ├── Header.tsx       # Application header
+│   ├── Sidebar.tsx      # Navigation sidebar
+│   ├── SummaryCard.tsx  # Statistics cards
+│   ├── ProjectTable.tsx # Projects data table
+│   └── EmployeeTable.tsx # Team data table
+├── page/            # Page components
+│   ├── Login.tsx       # Login page
+│   ├── Projects.tsx    # Projects page
+│   └── Team.tsx        # Team page
+├── data/            # Data files
+│   ├── projects.ts     # Project data
+│   └── employees.ts    # Employee data
+├── utils/           # Utilities
+│   └── auth.ts         # Authentication logic
+└── type.d.ts        # TypeScript type definitions
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Installation
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### Development
+
+```bash
+npm run dev
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+### Preview
+
+```bash
+npm run preview
+```
+
+## Sagara Technology Divisions
+
+- **Digital Division**: Web Technology, Mobile Technology, Augmented Reality
+- **Creative Division**: UX Design, UI Design, Digital Marketing
+- **Smart Devices Division**: IoT, UAV, RFID
+- **Web3 Services**: Smart Contracts, NFT, DeFi
+
+## License
+
+© 2025 PT. Sagara Asia Teknologi - South Jakarta and Bandung, Indonesia

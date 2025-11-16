@@ -20,33 +20,62 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 w-80 rounded-lg shadow-lg"
-      >
-        <h2 className="text-xl font-semibold mb-4">Login</h2>
+    <div className="h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-gray-100">
+      <div className="bg-white p-8 w-96 rounded-lg shadow-xl">
+        <div className="flex flex-col items-center mb-6">
+          <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+            <span className="text-white font-bold text-2xl">S</span>
+          </div>
+          <h1 className="text-2xl font-bold text-gray-800 mb-1">
+            Sagara Technology
+          </h1>
+          <p className="text-sm text-gray-500">Software Developer Indonesia</p>
+          <p className="text-xs text-gray-400 mt-2 text-center">
+            Plan, build, grow digital products
+          </p>
+        </div>
 
-        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <h2 className="text-xl font-semibold mb-4 text-gray-800">Login</h2>
 
-        <input
-          type="text"
-          placeholder="Email"
-          className="w-full p-2 border rounded mb-3"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          {error && (
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded text-sm">
+              {error}
+            </div>
+          )}
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full p-2 border rounded mb-3"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <div>
+            <input
+              type="text"
+              placeholder="Email"
+              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
+          </div>
 
-        <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
-          Masuk
-        </button>
-      </form>
+          <div>
+            <input
+              type="password"
+              placeholder="Password"
+              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+          >
+            Masuk
+          </button>
+        </form>
+
+        <p className="text-xs text-gray-400 mt-4 text-center">
+          Continuously delivering impact
+        </p>
+      </div>
     </div>
   );
 };
